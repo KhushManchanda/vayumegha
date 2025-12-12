@@ -9,8 +9,10 @@ build/
 # Misc
 .DS_Store
 .env
+.env.local
 .npm
 *.log
+*.pem
 
 # Database
 *.sqlite
