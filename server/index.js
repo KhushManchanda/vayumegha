@@ -10,7 +10,13 @@ const io = new Server(server, {
     cors: { origin: "*" }
 });
 
-app.use(cors());
+const PORT = process.env.PORT || 3001;
+
+// Middleware
+app.use(cors({
+    origin: '*', // Allow all origins for MVP/Cloud deployment
+    methods: ['GET', 'POST', 'PUT']
+}));
 app.use(express.json());
 
 // Socket.IO Connection
@@ -93,7 +99,7 @@ app.put('/api/downtime/:id/resolve', async (req, res) => {
 
 
 // Start Server
-const PORT = 3001;
+
 // Sync DB and Seed if needed (simple check)
 sequelize.sync().then(async () => {
     // Uncomment next line to reset data on restart
